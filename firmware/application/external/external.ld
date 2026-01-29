@@ -88,7 +88,11 @@ MEMORY
     ram_external_app_adult_toys_controller  (rwx) : org = 0xADEF0000, len = 32k
     ram_external_app_flex_rx  (rwx) : org = 0xADF00000, len = 32k
     ram_external_app_sstvrx  (rwx) : org = 0xADF10000, len = 32k
-
+    ram_external_app_subcarrx  (rwx) : org = 0xADF20000, len = 32k
+    ram_external_app_siggen  (rwx) : org = 0xADF30000, len = 32k
+    ram_external_app_sdusb  (rwx) : org = 0xADF40000, len = 32k
+    ram_external_app_morse_radio  (rwx) : org = 0xADF50000, len = 32k
+    ram_external_app_waterfall_designer (rwx) : org = 0xADF60000, len = 32k
 }
 
 SECTIONS
@@ -399,6 +403,12 @@ SECTIONS
         *(*ui*external_app*gfxeq*);
     } > ram_external_app_gfxeq
 
+    .external_app_waterfall_designer : ALIGN(4) SUBALIGN(4)
+    {
+        KEEP(*(.external_app.app_waterfall_designer.application_information));
+        *(*ui*external_app*waterfall_designer*);
+    } > ram_external_app_waterfall_designer
+
     .external_app_detector_rx : ALIGN(4) SUBALIGN(4)
     {
         KEEP(*(.external_app.app_detector_rx.application_information));
@@ -484,5 +494,29 @@ SECTIONS
         KEEP(*(.external_app.app_sstvrx.application_information));
         *(*ui*external_app*sstvrx*);
     } > ram_external_app_sstvrx
+
+    .external_app_subcarrx : ALIGN(4) SUBALIGN(4)
+    {
+        KEEP(*(.external_app.app_subcarrx.application_information));
+        *(*ui*external_app*subcarrx*);
+    } > ram_external_app_subcarrx
+
+    .external_app_siggen : ALIGN(4) SUBALIGN(4)
+    {
+        KEEP(*(.external_app.app_siggen.application_information));
+        *(*ui*external_app*siggen*);
+    } > ram_external_app_siggen
+
+     .external_app_sdusb : ALIGN(4) SUBALIGN(4)
+    {
+        KEEP(*(.external_app.app_sdusb.application_information));
+        *(*ui*external_app*sdusb*);
+    } > ram_external_app_sdusb
+   
+    .external_app_morse_radio : ALIGN(4) SUBALIGN(4)
+    {
+        KEEP(*(.external_app.app_morse_radio.application_information));
+        *(*ui*external_app*morse_radio*);
+    } > ram_external_app_morse_radio
 }
 
